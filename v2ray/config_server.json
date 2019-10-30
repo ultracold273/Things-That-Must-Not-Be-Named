@@ -1,0 +1,27 @@
+{
+    "inbounds": [
+        {
+            "port": 16823,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "408223db-9473-4dbb-b90c-eb6d582267cc",
+                        "alterId": 64
+                    }
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "settings": {}
+        }
+    ],
+    "log": {
+        "loglevel": "warning",
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log"
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "inbounds": [
+        {
+            "port": 1080,
+            "protocol": "socks",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"]
+            },
+            "settings": {
+                "auth": "noauth"
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "172.168.1.1",
+                        "port": 16823,
+                        "users": [
+                            {
+                                "id": "408223db-9473-4dbb-b90c-eb6d582267cc",
+                                "alterId": 64
+                            }
+                        ]
+                    }
+                ]
+            },
+            "tag": "proxy",
+            "mux": {"enabled": true}
+        },
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct"
+        }
+    ],
+    "routing": {
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": ["geosite:cn"]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "ip": [
+                    "geoip:cn",
+                    "geoip:private"
+                ]
+            }
+        ]
+    }
+}
